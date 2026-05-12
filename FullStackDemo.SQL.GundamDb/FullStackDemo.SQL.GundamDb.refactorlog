@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="a0796e44-321f-4f64-8904-5ff0ecfc4d1f" ChangeDateTime="10/19/2024 05:43:06">
+    <Property Name="ElementName" Value="[dbo].[MobileSuits].[Model_Code]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MobileSuits]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ModelCode" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="89daf555-8d51-439e-9a1e-a6a7d85b283a" ChangeDateTime="10/19/2024 05:46:26">
+    <Property Name="ElementName" Value="[dbo].[MobileSuits].[ManufacturedDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MobileSuits]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="OperatingSystem" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="dcc0a2fd-9894-434a-a10b-3dbee3084167" ChangeDateTime="10/19/2024 05:52:23">
+    <Property Name="ElementName" Value="[dbo].[MobileSuits].[Created_By]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MobileSuits]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CreatedBy" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a678ad57-12d9-4e11-aa69-013c3a2b0b56" ChangeDateTime="10/19/2024 05:53:47">
+    <Property Name="ElementName" Value="[dbo].[MobileSuits].[DeletedBy]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MobileSuits]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DateDeleted" />
+  </Operation>
+</Operations>
