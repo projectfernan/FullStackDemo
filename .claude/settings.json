@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": ["mcp__sqlserver-dev__query"],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./**/*.pem)",
+      "Read(./**/id_rsa)",
+      "Bash(cat .env*)",
+      "Bash(cat */.env*)",
+      "Bash(printenv)",
+      "Bash(env)",
+      "mcp__sqlserver-dev__execute",
+      "mcp__sqlserver-dev__delete",
+      "mcp__sqlserver-dev__insert",
+      "mcp__sqlserver-dev__update"
+    ]
+  }
+}
