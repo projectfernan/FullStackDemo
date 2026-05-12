@@ -1,0 +1,50 @@
+
+services:
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      SA_PASSWORD: "YourStrong!Pass123"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "14330:1433"
+    networks:
+      - app-network
+
+  webapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fullstackdemo-webapi
+    depends_on:
+      - sqlserver
+    environment:
+      ASPNETCORE_URLS: "http://+:5028"
+      ConnectionStrings__GundamDb: "Server=sqlserver,1433;Database=GundamDb;User Id=sa;Password=YourStrong!Pass123;TrustServerCertificate=True;"
+      ReactWebApp__ServerHost: "http://localhost:5173"
+    ports:
+      - "5028:5028"
+    networks:
+      - app-network
+
+  react:
+    build:
+      context: ./FullStackDemo.Frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: "http://localhost:5028"
+        VITE_BASIC_AUTH_API_UID: "dev"
+        VITE_BASIC_AUTH_API_PWD: "password"
+        VITE_TABLE_ROW_LIMIT: "5"
+    container_name: fullstackdemo-react
+    depends_on:
+      - webapi
+    ports:
+      - "5173:4173"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

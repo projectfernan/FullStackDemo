@@ -1,0 +1,27 @@
+FROM node:20-alpine AS build
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+
+ARG VITE_API_URL
+ARG VITE_BASIC_AUTH_API_UID
+ARG VITE_BASIC_AUTH_API_PWD
+ARG VITE_TABLE_ROW_LIMIT
+ENV VITE_API_URL=$VITE_API_URL
+ENV VITE_BASIC_AUTH_API_UID=$VITE_BASIC_AUTH_API_UID
+ENV VITE_BASIC_AUTH_API_PWD=$VITE_BASIC_AUTH_API_PWD
+ENV VITE_TABLE_ROW_LIMIT=$VITE_TABLE_ROW_LIMIT
+
+RUN npm run build
+
+FROM node:20-alpine AS runtime
+WORKDIR /app
+RUN npm install -g vite
+
+COPY --from=build /app/dist ./dist
+
+EXPOSE 4173
+CMD ["vite", "preview", "--host", "--port", "4173"]
